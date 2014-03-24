@@ -3,6 +3,17 @@
 <head>
   <title>Example Scala.js application</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style>
+        .gridworld {
+            background: ivory;
+        }
+
+        .cell {
+            fill: none;
+            stroke: royalblue;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,11 +26,17 @@ See README.md for detailed explanations.</p>
 <div id="playground">
 </div>
 
+<svg id="grid" class="gridworld" width="300" height="300" rows="3" cols="3">
+
+</svg>
+
 <script type="text/javascript" src="./target/scala-2.10/example-extdeps.js"></script>
 <script type="text/javascript" src="./target/scala-2.10/example-intdeps.js"></script>
 <script type="text/javascript" src="./target/scala-2.10/example.js"></script>
 
 <script type="text/javascript">
+ScalaJSExample().makeGridWorld("grid");
+
 ScalaJSExample().main();
 </script>
 
