@@ -5,6 +5,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <style>
+        .running_figure {
+            float: right;
+            margin: 10px;
+        }
+
         .gridworld {
             background: ivory;
         }
@@ -13,22 +18,37 @@
             fill: none;
             stroke: royalblue;
         }
+
+        .critter {
+            stroke: darkgrey;
+            fill: lightyellow;
+        }
+
+        .critter.alive {
+            stroke-opacity: 1.0;
+            fill-opacity: 1.0;
+        }
+
+        .critter.dead {
+            stroke-opacity: 0.2;
+            fill-opacity: 0.2;
+        }
     </style>
 </head>
 <body>
 
-<h1>Example Scala.js application - development version</h1>
+<h1>GridWorld Critters - development version</h1>
 
-<p>After having compiled and packaged properly the code for the application
-(using `sbt packageJS`), you should see "It works" herebelow.
-See README.md for detailed explanations.</p>
-
-<div id="playground">
-</div>
-
-<svg id="grid" class="gridworld" width="300" height="300" rows="3" cols="3">
-
+<svg id="grid" class="running_figure gridworld" width="100" height="100" rows="3" cols="3">
 </svg>
+
+<p>
+    GridWorld is a flat world composed of a grid of cells.
+    Critters live in some of these cells.
+    Critters are birthed, live and die.
+    Oh, and they have a personal color.
+</p>
+
 
 <script type="text/javascript" src="./target/scala-2.10/example-extdeps.js"></script>
 <script type="text/javascript" src="./target/scala-2.10/example-intdeps.js"></script>
