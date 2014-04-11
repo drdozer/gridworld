@@ -8,6 +8,7 @@ object Build extends sbt.Build {
     scalaJSSettings:_*
   ).settings(
     name := "gridworld",
-    libraryDependencies += "org.scala-lang.modules.scalajs" %% "scalajs-dom" % "0.3"
-  )
+    scalaVersion := "2.10.4",
+    libraryDependencies += "org.scala-lang.modules.scalajs" %% "scalajs-dom" % "0.3",
+    libraryDependencies += "org.scala-lang.modules.scalajs" %% "scalajs-jquery" % "0.3"  )
 }

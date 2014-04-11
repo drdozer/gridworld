@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example Scala.js application</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style>
+        .running_figure {
+            float: right;
+            margin: 10px;
+        }
+
+        .gridworld {
+            background: ivory;
+        }
+
+        .box {
+            fill: none;
+            stroke: royalblue;
+        }
+
+        .critter {
+            stroke: darkgrey;
+        }
+
+        .critter.alive {
+            stroke-opacity: 1.0;
+            fill-opacity: 1.0;
+        }
+
+        .critter.dead {
+            stroke-opacity: 0.1;
+            fill-opacity: 0.1;
+        }
+
+        .critter.empty {
+            fill: none;
+            stroke: none;
+        }
+    </style>
+</head>
+<body>
+
+<svg id="grid" class="running_figure gridworld" width="200" height="200" rows="4" cols="4">
+</svg>
+
+<p>
+    Critters can't move.
+    They are born, live and die in their box.
+    This restricts their dating chances.
+</p>
+
+<p>
+    In this GridWorld, the blue Critter is feeling frisky.
+    It attempts to get it on with its green neighbour. Click this <button id="special_hug">special_hug</button> button
+    to encourage them to do what comes naturally.
+</p>
+
+<p>
+    You can see that the child has a color that is a mixture of those of the parents.
+    In the next page we'll look at <a href="heredity.html">heredity</a> in gridworld.
+</p>
+
+
+<script type="text/javascript" src="./resources/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="./resources/snap.svg-min.js"></script>
+<script type="text/javascript" src="./resources/pusher.color.min.js"></script>
+<script type="text/javascript" src="./target/scala-2.10/example-extdeps.js"></script>
+<script type="text/javascript" src="./target/scala-2.10/example-intdeps.js"></script>
+<script type="text/javascript" src="./target/scala-2.10/example.js"></script>
+
+<script type="text/javascript">
+ScalaJSExample().makeGridWorld("grid");
+ScalaJSExample().setCritters("grid",
+        {r: 1, c: 1, color: "blue", state: "alive"},
+        {r: 1, c: 2, color: "green", state: "alive"});
+    $("#special_hug").click(function() {
+        ScalaJSExample().specialHug("grid", {r: 1, c: 1}, {r: 1, c: 2}, {r: 2, c: 1});
+    })
+</script>
+
+</body>
+</html>

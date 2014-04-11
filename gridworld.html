@@ -14,14 +14,13 @@
             background: ivory;
         }
 
-        .cell {
+        .box {
             fill: none;
             stroke: royalblue;
         }
 
         .critter {
             stroke: darkgrey;
-            fill: lightyellow;
         }
 
         .critter.alive {
@@ -37,27 +36,33 @@
 </head>
 <body>
 
-<h1>GridWorld Critters - development version</h1>
-
-<svg id="grid" class="running_figure gridworld" width="100" height="100" rows="3" cols="3">
+<svg id="grid" class="running_figure gridworld" width="200" height="100" rows="5" cols="10">
 </svg>
 
 <p>
-    GridWorld is a flat world composed of a grid of cells.
-    Critters live in some of these cells.
-    Critters are birthed, live and die.
-    Oh, and they have a personal color.
+    GridWorld is a world laid out as a grid.
+    Critters live in some of the grid boxes.
+    Oh, and they each have their own personal color.
+</p>
+
+<p>
+    We are going to use GridWorld to explore evolution.
+    The critters will live and breed and die, and in the process adapt or die.
+    But before we get started, we're going to learn about how Critters make babies in
+    <a href="the_birds_and_the_bees.html">the birds and the bees</a>.
 </p>
 
 
+<script type="text/javascript" src="./resources/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="./resources/snap.svg-min.js"></script>
+<script type="text/javascript" src="./resources/pusher.color.min.js"></script>
 <script type="text/javascript" src="./target/scala-2.10/example-extdeps.js"></script>
 <script type="text/javascript" src="./target/scala-2.10/example-intdeps.js"></script>
 <script type="text/javascript" src="./target/scala-2.10/example.js"></script>
 
 <script type="text/javascript">
 ScalaJSExample().makeGridWorld("grid");
-
-ScalaJSExample().main();
+ScalaJSExample().animateGridWorld("grid", 700, 0.8)
 </script>
 
 </body>
