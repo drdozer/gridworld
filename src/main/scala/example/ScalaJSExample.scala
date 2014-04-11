@@ -62,7 +62,7 @@ object ScalaJSExample {
   }
 
   @JSExport
-  def animateGridWorld(id: String, animationRate: Long, changeColorRate: Double) = {
+  def animateGridWorld(id: String, animationRate: Double, changeColorRate: Double) = {
     val svg = document.getElementById(id).asInstanceOf[SVGSVGElement]
     val rows = svg.getAttribute("rows").toInt
     val cols = svg.getAttribute("cols").toInt
@@ -79,11 +79,10 @@ object ScalaJSExample {
 
         critter.setAttribute("fill", f"rgb($randByte,$randByte,$randByte)")
       } else {
-        val jCritter = jQuery(critter)
-        if (jCritter.hasClass("alive")) {
-          jCritter.removeClass("alive").addClass("dead")
+        if (critter.hasClass("alive")) {
+          critter.removeClass("alive").addClass("dead")
         } else {
-          jCritter.removeClass("dead").addClass("alive")
+          critter.removeClass("dead").addClass("alive")
         }
       }
     }
@@ -172,6 +171,12 @@ object ScalaJSExample {
   }
 
   implicit class ElementPimp(val el : Element) extends AnyVal {
+    def hasClass(cls: js.String): Boolean = {
+      val clss = el getAttribute "class"
+      val clsArray = clss split (new RegExp("""\s+"""))
+      clsArray contains cls
+    }
+
     def removeClass(cls: js.String): el.type = {
       val clss = el getAttribute "class"
       val clsArray = clss split (new RegExp("""\s+"""))
